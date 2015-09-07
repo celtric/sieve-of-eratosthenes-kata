@@ -6,8 +6,7 @@ import java.util.List;
 public class PrimeFinder {
 
     static final int UNCHECKED = 0;
-    static final int PRIME = 1;
-    static final int NOT_PRIME = 2;
+    static final int NOT_PRIME = 1;
 
     public int[] findPrimes(int limit) {
         List<Integer> primes = new ArrayList<>();
@@ -19,7 +18,6 @@ public class PrimeFinder {
             }
 
             primes.add(i);
-            primeCandidates[i] = PRIME;
             disableMultiples(primeCandidates, i);
         }
 
