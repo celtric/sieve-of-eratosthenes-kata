@@ -31,10 +31,8 @@ public class PrimeFinder {
     }
 
     private void disableMultiples(int[] candidates, int i) {
-        for (int n = i + 1; n < candidates.length; n++) {
-            if (n % i == 0) {
-                candidates[n] = NOT_PRIME;
-            }
+        for (int n = i * 2; n < candidates.length; n += i) {
+            candidates[n] = NOT_PRIME;
         }
     }
 }
