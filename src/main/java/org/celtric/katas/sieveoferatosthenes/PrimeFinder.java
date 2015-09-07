@@ -9,11 +9,9 @@ public class PrimeFinder {
     static final int PRIME = 1;
     static final int NOT_PRIME = 2;
 
-    int[] primeCandidates;
-
     public int[] findPrimes(int limit) {
         List<Integer> primes = new ArrayList<>();
-        primeCandidates = new int[limit + 1];
+        int[] primeCandidates = new int[limit + 1];
 
         for (int i = 2; i <= limit; i++) {
             if (primeCandidates[i] != UNCHECKED) {
@@ -22,7 +20,7 @@ public class PrimeFinder {
 
             primes.add(i);
             primeCandidates[i] = PRIME;
-            disableMultiplesOf(i);
+            disableMultiples(primeCandidates, i);
         }
 
         return toArray(primes);
@@ -32,10 +30,10 @@ public class PrimeFinder {
         return anArray.stream().mapToInt(i -> i).toArray();
     }
 
-    private void disableMultiplesOf(int i) {
-        for (int n = i + 1; n < primeCandidates.length; n++) {
+    private void disableMultiples(int[] candidates, int i) {
+        for (int n = i + 1; n < candidates.length; n++) {
             if (n % i == 0) {
-                primeCandidates[n] = NOT_PRIME;
+                candidates[n] = NOT_PRIME;
             }
         }
     }
