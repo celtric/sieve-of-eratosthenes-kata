@@ -29,4 +29,19 @@ public class PrimeFinderTest {
         assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[8]);
         assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[10]);
     }
+
+    @Test
+    public void it_discards_all_composites() {
+        finder.findPrimes(10);
+
+        assertEquals(PrimeFinder.PRIME, finder.primeCandidates[2]);
+        assertEquals(PrimeFinder.PRIME, finder.primeCandidates[3]);
+        assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[4]);
+        assertEquals(PrimeFinder.PRIME, finder.primeCandidates[5]);
+        assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[6]);
+        assertEquals(PrimeFinder.PRIME, finder.primeCandidates[7]);
+        assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[8]);
+        assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[9]);
+        assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[10]);
+    }
 }
