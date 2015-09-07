@@ -44,4 +44,9 @@ public class PrimeFinderTest {
         assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[9]);
         assertEquals(PrimeFinder.NOT_PRIME, finder.primeCandidates[10]);
     }
+
+    @Test
+    public void it_finds_prime_numbers_up_to_5() {
+        assertArrayEquals(new int[]{2, 3, 5}, finder.findPrimes(5));
+    }
 }

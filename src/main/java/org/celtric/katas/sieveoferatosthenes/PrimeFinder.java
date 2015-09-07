@@ -1,5 +1,8 @@
 package org.celtric.katas.sieveoferatosthenes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrimeFinder {
 
     static final int UNCHECKED = 0;
@@ -9,6 +12,7 @@ public class PrimeFinder {
     int[] primeCandidates;
 
     public int[] findPrimes(int limit) {
+        List<Integer> primes = new ArrayList<>();
         primeCandidates = new int[limit + 1];
 
         for (int i = 2; i <= limit; i++) {
@@ -16,11 +20,16 @@ public class PrimeFinder {
                 continue;
             }
 
+            primes.add(i);
             primeCandidates[i] = PRIME;
             disableMultiplesOf(i);
         }
 
-        return new int[]{};
+        return toArray(primes);
+    }
+
+    private static int[] toArray(List<Integer> anArray) {
+        return anArray.stream().mapToInt(i -> i).toArray();
     }
 
     private void disableMultiplesOf(int i) {
